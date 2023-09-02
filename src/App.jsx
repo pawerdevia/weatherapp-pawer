@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './App.css'
 import ClimateChange from './components/ClimateChange'
+import PreLoader from './components/PreLoader'
 
 function App() {
 
@@ -43,8 +44,7 @@ function App() {
 
   return (
     <>
-
-      
+      <PreLoader/>
       <ClimateChange
         climate={climate}
         temp = {temp}
