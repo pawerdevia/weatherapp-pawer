@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { preLoaderAnim } from '../animations'
 import './preloader.css'
-const PreLoader = () => {
+const PreLoader = ({coords}) => {
 
     useEffect(() => {
         preLoaderAnim()
@@ -9,13 +9,27 @@ const PreLoader = () => {
     
 
     return (
-        <div className="preloader">
+        <>
+        {coords ? (
+            <div className="preloader">
             <div className="texts-container">
                 <span>!Welcome </span>
                 <span>Weather </span>
                 <span>App!</span>
             </div>
         </div>
+
+        ) : 
+        <div className="preloader preloader-error">
+            <div className="texts-container">
+                <span>ERROR </span>
+                <span>UBICATION </span>
+                <span>:C</span>
+            </div>
+        </div>
+        }
+        
+        </>
     )
 }
 

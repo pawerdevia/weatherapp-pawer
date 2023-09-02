@@ -44,7 +44,9 @@ function App() {
 
   return (
     <>
-      <PreLoader/>
+      <PreLoader
+      coords={coords}
+      />
       <ClimateChange
         climate={climate}
         temp = {temp}
