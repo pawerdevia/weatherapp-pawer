@@ -1,0 +1,32 @@
+.error-ubitacion{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fc5c65;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.img-error{
+    width: 10vw;
+}
+
+.text-error{
+    text-align: center;
+    width: 50vw;
+    font-size:2rem;
+}
+
+@media (max-width:1000px) {
+    .img-error{
+        width: 30vw;
+    }
+}

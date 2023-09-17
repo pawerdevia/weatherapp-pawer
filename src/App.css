@@ -13,7 +13,7 @@
 .card{
     background-color: rgba(240, 248, 255, 0.8);
     width: 40vw;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,9 +65,22 @@
 
 .main__info{
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.main__info > p > span{
+.list-info{
+    list-style: none;
+}
+
+.info__item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info__item > span{
     font-weight: 800;
 }
 
@@ -110,7 +123,7 @@
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 1000px){
     .card{
         width: 75vw;
     }

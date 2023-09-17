@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './App.css'
 import ClimateChange from './components/ClimateChange'
+import ErrorUbication from './components/ErrorUbication'
 import PreLoader from './components/PreLoader'
 
 function App() {
@@ -14,14 +15,14 @@ function App() {
   useEffect(() => {
 
     const success = (pos) => {
-      const {latitude,longitude} = pos.coords
-      setCoords({lat:latitude, lon:longitude})
+      const { latitude, longitude } = pos.coords
+      setCoords({ lat: latitude, lon: longitude })
     }
     navigator.geolocation.getCurrentPosition(success);
   }, [])
 
 
-  
+
   useEffect(() => {
     if (coords) {
       const apiKey = 'eb96815c50af5a0c476db0d697bc246c'
@@ -31,12 +32,12 @@ function App() {
           setClimate(res.data)
           const obj = {
             celsius: res.data.main.temp - 273.15,
-            farenheit: (res.data.main.temp - 273.15) * 9/5 + 32
+            farenheit: (res.data.main.temp - 273.15) * 9 / 5 + 32
           }
           setTemp(obj)
         }
-          
-          )
+
+        )
         .catch(err => console.log(err))
     }
   }, [coords])
@@ -44,13 +45,18 @@ function App() {
 
   return (
     <>
-      <PreLoader
-      coords={coords}
-      />
-      <ClimateChange
-        climate={climate}
-        temp = {temp}
-      />
+      {coords ? (
+        <>
+          <PreLoader/>
+          <ClimateChange
+            climate={climate}
+            temp={temp}
+          />
+        </>
+      )
+        :
+        <ErrorUbication/>
+      }
     </>
   )
 }
