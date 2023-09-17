@@ -12,7 +12,9 @@ const ClimateChange = ({ climate , temp}) => {
 
     useEffect(() => {
         if (description) {
-            setBg(description.replace(' ', '%'))
+            let keywords = description.split(' ')
+            let description2 = `${keywords[0]}%${keywords[1]}`
+            setBg(description2)
         }
     }, [description])
 
@@ -22,18 +24,23 @@ const ClimateChange = ({ climate , temp}) => {
             const apiKeyPixabay = '32808186-d3409bfac0a150cb85d0c03fc'
             const urlPixabay = `https://pixabay.com/api/?key=${apiKeyPixabay}&q=${bg}`
             axios.get(urlPixabay)
-                .then(response => setBackgroundPage(response.data))
+                .then(response => {
+                    setBackgroundPage(response.data)
+                })
+                .catch(err => console.log(err))
         }
 
     }, [bg])
 
     const estiloDeFondo = {
-        backgroundImage: `url(${backgroundPage?.hits[0].largeImageURL})`
+        backgroundImage: `url(${backgroundPage?.hits[4].largeImageURL})`
     };
 
     const urlIcon = `https://openweathermap.org/img/wn/${climate?.weather[0].icon}@2x.png`
 
     const handleChangeTemp = () => setisCelsius(!isCelsius)
+
+    console.log(backgroundPage)
 
     return (
         <article style={estiloDeFondo} className='principal'>
